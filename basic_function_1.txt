@@ -1,0 +1,161 @@
+// Objectives
+// 1. Understand how a computer executes each line of code
+// 2. Get comfortable with how a function works and how its return statement works
+// 3. Identify some common mistakes students make and learn how to avoid them
+
+// Predict the Output without using a js console, then check them to see which ones i got right and wrong. Tally both on the top.
+
+FINAL TALLY: 14/15 Correct.  I missed number 9 and I made a note as to why.
+COMMON MISTAKES: I think it's habit for us to jump to the end of the code block to see what's being asked, rather than taking it line by line which is what all the videos keep saying! But I'm definitely getting better at reading these things.
+
+
+
+
+
+// 1
+
+function a(){
+    return 35;
+}
+console.log(a()) // Output =  is 35  (Correct)
+
+
+// 2 
+
+function a(){
+    return 4;
+}
+console.log(a()+a()); // Output = 8 (4+4)  (Correct)
+
+// 3
+
+function a(b){
+    return b;
+}
+console.log(a(2)+a(4)); // Output = function a is being passed paramater of 2 + function a being passed parameter of 4, so 2+4 = 6  (Right)
+
+// 4
+
+function a(b){
+        console.log(b);
+        return b*3;
+    }
+    console.log(a(3)); // Output = 3, 9 (3*3)   (Right)
+
+
+// 5 
+
+function a(b){
+   return b*4;
+   console.log(b);
+}
+console.log(a(10)); // Output = 40 (10*4)   (Right)
+
+// 6
+
+function a(b){
+    if(b<10) {
+        return 2;
+    }
+    else     {
+        return 4;
+    }
+    console.log(b);
+}
+console.log(a(15)); // Output = 4 (15 is not < 10)    (Right)
+
+// 7
+
+function a(b,c){
+    return b*c;
+}
+console.log(10,3);
+console.log( a(3,10) ); // Output = 10, 3 (there is no function being called inside, so it'll just print what you ask it to), and 30 (10*3)    (Right)
+
+// 8
+
+function a(b){
+    for(var i=0; i<10; i++){
+        console.log(i);
+    }
+    return i;
+}
+console.log(3);
+console.log(4); // Output = 3, 4 (no function being called)   (Right)
+
+// 9
+
+function a(){
+    for(var i=0; i<10; i++){
+        i = i +2;
+        console.log(i);
+    }
+}
+a(); // Output = 2,4,6,8    (WRONG - I think i know where I messed up: the first value was right because i started at 0, it was < 10, so it went to the next line and I read it as 0+2. Then when the loop started again, I made the mistake of not remembering the i++ being done so it was actually at 3. When the for loop ran, 3 was still < 10, so it added 2 there, which made it 5, then i++ made it 6, which, when ran again was still < 10, which added 2 and made it 8, etc.)
+
+// 10
+
+function a(b,c){
+    for(var i=b; i<c; i++) {
+       console.log(i);
+   }
+   return b*c;
+}
+a(0,10); // Output = 0,1,2,3,4,5,6,7,8,9
+console.log(a(0,10)); // Output = 0,1,2,3,4,5,6,7,8,9,0 (0*10 = 0)    (Right! since the function is being called inside the console.log, it'll print it again, along with the math operation)
+
+// 11 
+
+function a(){
+    for(var i=0; i<10; i++){
+       for(var j=0; j<10; j++){
+           console.log(j);
+       }
+       console.log(i);
+    }
+}
+// Output = None! No function was called   (Right!)
+
+// 12
+
+function a(){
+    for(var i=0; i<10; i++){
+        for(var j=0; j<10; j++){
+            console.log(i,j);
+        }
+        console.log(j,i);
+    }
+}
+// Output = Also none! Again, no functino was called outside the curly braces  (Right again!)
+
+// 13
+
+var z = 10;
+function a(){
+    var z = 15;
+    console.log(z);
+}
+console.log(z); // Output = 10 (no function call, so z is the value it was when it was first set. If the function had been called, the output would be 15)  (Right!)
+
+// 14 
+
+var z = 10;
+function a(){
+    var z = 15;
+    console.log(z);
+}
+a(); // Output = 15
+console.log(z); // Output = 10   (Right! No return statement to carry over the new value of z )
+
+// 15
+
+var z = 10;
+function a(){
+    var z = 15;
+    console.log(z);
+    return z;
+}
+z = a(); // Output = 15
+console.log(z); // Output = 15   (Right! Since there is a return statement inside the function, z can be console logged with it's new value)
+
+
